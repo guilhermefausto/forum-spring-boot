@@ -9,7 +9,7 @@ Dentre as características do projeto, posso destacar algumas:
  - Criação de API Restful
  - Validações com BeanValidation e Expressões Regulares
  - Persistencia de dados com H2 e Spring Data JPA 
- - 
- - Implementação de autenticação com Spring Security
- - Monitoramento da aplicação com Interceptadores
- - Paginação e Cache
+ - Implementação de autenticação com Spring Security e JJWT
+ - Monitoramento com Spring Boot Actuator
+ - Paginação, Ordenação e Cache
+ - Documentação da API com Swagger
