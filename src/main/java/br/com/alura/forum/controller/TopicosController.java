@@ -59,7 +59,7 @@ public class TopicosController {
 	
 	@PostMapping
 	@Transactional
-	@CacheEvict(value = "listaDetopicos", allEntries = true)
+	@CacheEvict(value = "listaDeTopicos", allEntries = true)
 	public ResponseEntity<TopicoDto> cadastrar(@RequestBody @Valid TopicoForm topicoForm, UriComponentsBuilder uriBuilder) {
 		Topico topico = topicoForm.converter(cursoRepository);
 		topicoRepository.save(topico);
@@ -82,7 +82,7 @@ public class TopicosController {
 	
 	@PutMapping("/{id}")
 	@Transactional
-	@CacheEvict(value = "listaDetopicos", allEntries = true)
+	@CacheEvict(value = "listaDeTopicos", allEntries = true)
 	//o spring automaticamente chama o método para atualizar no BD, não precisar chamar aqui
 	public ResponseEntity<TopicoDto> atualizar(@PathVariable Long id, @RequestBody @Valid AtualizacaoTopicoForm form){
 		Optional<Topico> optional = topicoRepository.findById(id);
@@ -96,7 +96,7 @@ public class TopicosController {
 	
 	@DeleteMapping("/{id}")
 	@Transactional
-	@CacheEvict(value = "listaDetopicos", allEntries = true)
+	@CacheEvict(value = "listaDeTopicos", allEntries = true)
 	public ResponseEntity<?> remover(@PathVariable Long id){
 		Optional<Topico> optional = topicoRepository.findById(id);
 		if(optional.isPresent()) {
