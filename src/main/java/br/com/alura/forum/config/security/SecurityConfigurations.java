@@ -19,7 +19,7 @@ import br.com.alura.forum.repository.UsuarioRepository;
 
 @EnableWebSecurity
 @Configuration
-@Profile(value ={"prod","test"})
+@Profile(value ={"prod","test","default"})
 public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
@@ -49,11 +49,16 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			.antMatchers(HttpMethod.GET, "/topicos").permitAll()
 			.antMatchers(HttpMethod.GET, "/topicos/*").permitAll()
+			
 			.antMatchers(HttpMethod.POST, "/auth").permitAll()
+			
 			.antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
+			
 			.antMatchers(HttpMethod.GET, "/h2-console/**").permitAll()
 			.antMatchers(HttpMethod.POST, "/h2-console/**").permitAll()
+			
 			.antMatchers(HttpMethod.DELETE, "/topicos/*").hasRole("MODERADOR")
+			
 			.anyRequest().authenticated()
 			//configurando projeto para não criar sessão
 			.and().csrf().disable()
